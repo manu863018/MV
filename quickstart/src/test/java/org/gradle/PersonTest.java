@@ -88,6 +88,8 @@ public class PersonTest {
 	public void testValidatePersonId() {
 		Person person = new Person("Ana", 33);
 		assertTrue(person.isIdValid("6749409LP"));
+		assertFalse(person.isIdValid("67494098P"));
+		assertFalse(person.isIdValid("6749409L8"));
 		assertFalse(person.isIdValid("6749409"));
 	}
 }
