@@ -15,7 +15,7 @@ pipeline {
             steps {
                 echo 'Testing..'
 	        sh './quickstart/gradlew clean test -p quickstart/'
-		junit '**/target/*.xml'
+                junit 'quickstart/build/test-results/test/*.xml'
             }
         }
         stage('Deploy') {
