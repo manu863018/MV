@@ -27,17 +27,17 @@ pipeline {
     post {
        always {
            junit 'quickstart/build/test-results/test/*.xml'
+	   publishHTML (target: [
+               allowMissing: false,
+	       alwaysLinkToLastBuild: false,
+	       keepAll: true,
+	       reportDir: 'quickstart/build/reports/tests/test',
+	       reportFiles: 'index.html',
+	       reportName: "Test Summary"
+	     ])	   
        }
        success {
            archiveArtifacts artifacts: 'quickstart/build/libs/*.jar', fingerprint: true
-       }
-       publishHTML (target: [
-           allowMissing: false,
-           alwaysLinkToLastBuild: false,
-           keepAll: true,
-           reportDir: 'quickstart/build/reports/tests/test',
-	   reportFiles: 'index.html',
-	   reportName: "Tests Report"
-       ])      
+       }      
     }
 }
