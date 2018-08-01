@@ -5,13 +5,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-	        sh './quickstart/gradlew clean assemble -p gradle/quickstart/'
+	        sh './quickstart/gradlew clean assemble -p quickstart/'
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing..'
-	        sh './quickstart/gradlew clean test -p gradle/quickstart/'
+	        sh './quickstart/gradlew clean test -p quickstart/'
             }
         }
         stage('Deploy') {
