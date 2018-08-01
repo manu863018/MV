@@ -14,13 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh './quickstart/gradlew clean test jacocoTestReport -p quickstart/'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
-		sh './quickstart/gradlew clean build -p quickstart/'
+                sh './quickstart/gradlew test jacocoTestReport -p quickstart/'
             }
         }
     }
