@@ -31,6 +31,13 @@ pipeline {
        success {
            archiveArtifacts artifacts: 'quickstart/build/libs/*.jar', fingerprint: true
        }
-
+       publishHTML (target: [
+           allowMissing: false,
+           alwaysLinkToLastBuild: false,
+           keepAll: true,
+           reportDir: 'quickstart/build/reports/tests/test',
+	   reportFiles: 'index.html',
+	   reportName: "Tests Report"
+       ])      
     }
 }
