@@ -14,7 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..'
-                sh './quickstart/gradlew clean test -p quickstart/'
+                sh './quickstart/gradlew clean test jacocoTestReport -p quickstart/'
             }
         }
         stage('Deploy') {
@@ -34,7 +34,15 @@ pipeline {
 	       reportDir: 'quickstart/build/reports/tests/test',
 	       reportFiles: 'index.html',
 	       reportName: "Test Summary"
-	     ])	   
+	     ])
+           publishHTML (target: [
+               allowMissing: false,
+	       alwaysLinkToLastBuild: false,
+	       keepAll: true,
+	       reportDir: 'quickstart/build/reports/jacoco',
+	       reportFiles: 'index.html',
+	       reportName: "Code Coverage"
+             ])	       
        }
        success {
            archiveArtifacts artifacts: 'quickstart/build/libs/*.jar', fingerprint: true
