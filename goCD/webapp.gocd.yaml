@@ -1,12 +1,12 @@
 format_version: 3
-pipelines:
-  lock_behavior: lockOnFailure
+pipelines:  
   mv-java-quickstart:
+    lock_behavior: lockOnFailure
     group: TEST
     materials:
       repo:
-        git: https://github.com/manu863018/MV.git
-        master: gocd
+        git: https://github.com/devops-at06/MV.git
+        branch: master
     stages:
       - Build:
           jobs:
@@ -18,7 +18,7 @@ pipelines:
                       - "clean"
                       - "assemble"
                       - "-p"
-                      - "quickstart"
+                      - "quickstart/"
               artifacts:
                 - build:
                     source: quickstart/build/libs/*.jar
@@ -33,7 +33,7 @@ pipelines:
                       - clean
                       - test
                       - -p
-                      - quickstart                      
+                      - quickstart/                      
               artifacts:
                 - build:
                     source: quickstart/build/reports/tests/test/**/*
