@@ -1,7 +1,7 @@
 format_version: 3
-pipelines:
-  lock_behavior: lockOnFailure
+pipelines:  
   mv-java-quickstart:
+    lock_behavior: lockOnFailure
     group: TEST
     materials:
       repo:
