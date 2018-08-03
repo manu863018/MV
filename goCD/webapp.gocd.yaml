@@ -6,7 +6,7 @@ pipelines:
     materials:
       repo:
         git: https://github.com/devops-at06/MV.git
-        branch: master
+        branch: change_gocd
     stages:
       - Build:
           jobs:
