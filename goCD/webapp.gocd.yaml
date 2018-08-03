@@ -18,7 +18,7 @@ pipelines:
                       - "clean"
                       - "assemble"
                       - "-p"
-                      - "quickstart"
+                      - "quickstart/"
               artifacts:
                 - build:
                     source: quickstart/build/libs/*.jar
@@ -33,7 +33,7 @@ pipelines:
                       - clean
                       - test
                       - -p
-                      - quickstart                      
+                      - quickstart/                      
               artifacts:
                 - build:
                     source: quickstart/build/reports/tests/test/**/*
