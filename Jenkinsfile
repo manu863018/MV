@@ -17,6 +17,11 @@ pipeline {
                 sh './quickstart/gradlew test jacocoTestReport -p quickstart/'
             }
         }
+        stage('CodeQuality') {
+		    steps {
+                echo 'Code Quality ...'
+			}			
+        }		
     }
     post {
        always {
