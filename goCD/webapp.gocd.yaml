@@ -5,8 +5,8 @@ pipelines:
     group: TEST
     materials:
       repo:
-        git: https://igithub.com/devops-at06/MV.git
-        branch: task9
+        git: https://github.com/devops-at0i6/MV.git
+        branch: master
     stages:
       - Build:
           jobs:
