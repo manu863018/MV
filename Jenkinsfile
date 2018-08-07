@@ -15,10 +15,10 @@ pipeline {
             }
         }
         stage('CodeQuality') {
-		    steps {
+            steps {
                 echo 'Code Quality ...'
-				sh './quickstart/gradlew sonarqube -p quickstart/'
-			}			
+                sh './quickstart/gradlew sonarqube -p quickstart/'
+            }			
         }		
     }
     post {
@@ -46,3 +46,4 @@ pipeline {
        }      
     }
 }
+
