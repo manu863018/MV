@@ -1,9 +1,14 @@
 version: '3'
 services:
   jenkins_server:
-          image: "registry.fundacion-jala.local/devops/jenkinsci/blueocean:1.5.0"
+    image: "registry.fundacion-jala.local/devops/jenkinsci/blueocean:1.5.0"
     ports:
       - "8080:8080"
       - "5000:5000"
     volumes:
       - ./jenkins:/var/jenkins_home
+  sonarqube:
+    image: "registry.fundacion-jala.local/devops/sonarqube:6.7.4-alpine"
+    ports:
+      - "9000:9000"
+      - "9092:9092"
