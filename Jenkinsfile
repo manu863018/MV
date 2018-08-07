@@ -5,10 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Building..'
-                sh '''
-                chmod +x quickstart/gradlew
-                ./quickstart/gradlew clean assemble -p quickstart/
-                '''
+                sh './quickstart/gradlew clean assemble -p quickstart/'
             }
         }
         stage('Test') {
@@ -20,6 +17,7 @@ pipeline {
         stage('CodeQuality') {
 		    steps {
                 echo 'Code Quality ...'
+				sh './quickstart/gradlew sonarqube -p quickstart/'
 			}			
         }		
     }
