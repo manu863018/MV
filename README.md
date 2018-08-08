@@ -2,9 +2,10 @@
 
 ##REQUIREMENTS
 
-* Oracle Java 9
+* Oracle Java i9
 
 ##Using Fabric for deployment
+
 Fabric is a Python library used to interact with SSH. This allows us to automate many tasks, deployment of out application is one of these.
 Fabric scripts are basic Python files. They are run using the fab tool that is shipped with with Fabric.
 The command to download it in ubuntu:
