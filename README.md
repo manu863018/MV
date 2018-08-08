@@ -9,9 +9,12 @@
 Fabric is a Python library used to interact with SSH. This allows us to automate many tasks, deployment of out application is one of these.
 Fabric scripts are basic Python files. They are run using the fab tool that is shipped with with Fabric.
 The command to download it in ubuntu:
- - sudo apt-get install fabric
+
+    - sudo apt-get install fabric
+
 Or in windows, using pip:
- - pip install fabric
+
+    - pip install fabric
  
 What Fabric really brings to the table is its extensive and excellent integration with SSH that allows streamlining everything using simple scripts (i.e. fabfile.py).
 
