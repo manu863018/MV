@@ -6,7 +6,7 @@ remotes {
   webServer {
     host = '10.28.109.117'
     user = 'ubuntu'
-    identity = file('C:\\Users\\Administrator\\Documents\\jvvkp.txt')
+    identity = file(System.properties['key.path'])
   }
 }
 
