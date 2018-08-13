@@ -15,7 +15,7 @@ task deploy {
     ssh.run {
       session(remotes.webServer) {
         execute 'sudo chmod -R ugo+rw /var/lib/tomcat8/'
-		put from: 'build/libs/quickstart.war', into: '/var/lib/tomcat8/webapps/'        
+        put from: 'build/libs/quickstart.war', into: '/var/lib/tomcat8/webapps/'        
       }
     }
   }
