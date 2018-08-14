@@ -86,15 +86,6 @@ pipelines:
                       - test
                       - -p
                       - webapp-quickstart/                      
-              artifacts:
-                - build:
-                    source: webapp-quickstart/build/reports/tests/test/**/*
-                    destination: html
-                - test:
-                    source: webapp-quickstart/build/test-results/test/*.xml
-                    destination: xml                    
-              tabs:
-                unit_test: html/index.html 
       - Deploy:
           jobs:
             Application:
@@ -103,7 +94,7 @@ pipelines:
                     command: ./webapp-quickstart/gradlew
                     arguments:
                       - -b
-                      - /webapp-quickstart/deploy.gradle
+                      - deploy.gradle
                       - deploy
                       - Pdev_server=10.28.109.121
                       - -p
