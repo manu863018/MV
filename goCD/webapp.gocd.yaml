@@ -94,17 +94,7 @@ pipelines:
                     source: webapp-quickstart/build/test-results/test/*.xml
                     destination: xml                    
               tabs:
-                unit_test: html/index.html
-      - CodeQuality:
-          jobs:
-            Check:
-              tasks:
-                - exec:
-                    command: ./webapp-quickstart/gradlew
-                    arguments:
-                      - sonarqube
-                      - -p
-                      - webapp-quickstart/  
+                unit_test: html/index.html 
       - Deploy:
           jobs:
             Application:
