@@ -5,8 +5,8 @@ pipelines:
     group: TEST
     materials:
       repo:
-        git: https://github.com/devops-at06/MV.git
-        branch: master
+        git: https://github.com/manu863018/MV.git
+        branch: task12
     stages:
       - Build:
           jobs:
@@ -53,4 +53,69 @@ pipelines:
                       - sonarqube
                       - -p
                       - quickstart/
+  mv-web-quickstart:
+    lock_behavior: lockOnFailure
+    group: WebApp
+    materials:
+      repo:
+        git: https://github.com/manu863018/MV.git
+        branch: task12
+    stages:
+      - Build:
+          jobs:
+            building:
+              tasks:
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments:
+                      - "clean"
+                      - "assemble"
+                      - "-p"
+                      - "webapp-quickstart/"
+              artifacts:
+                - build:
+                    source: webapp-quickstart/build/libs/*.war
+                    destination: Build
+      - Test:
+          jobs:
+            Unit_Test:
+              tasks:
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments: 
+                      - test
+                      - -p
+                      - webapp-quickstart/                      
+              artifacts:
+                - build:
+                    source: webapp-quickstart/build/reports/tests/test/**/*
+                    destination: html
+                - test:
+                    source: webapp-quickstart/build/test-results/test/*.xml
+                    destination: xml                    
+              tabs:
+                unit_test: html/index.html
+      - CodeQuality:
+          jobs:
+            Check:
+              tasks:
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments:
+                      - sonarqube
+                      - -p
+                      - webapp-quickstart/  
+      - Deploy:
+          jobs:
+            Application:
+              tasks:
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments:
+                      - b
+                      - webapp-quickstart/deploy.gradle
+                      - deploy
+                      - Pdev_server=10.28.109.121
+                      - p
+                      - webapp-quickstart/                      
  
