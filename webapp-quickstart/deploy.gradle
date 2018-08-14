@@ -17,7 +17,7 @@ task deploy {
         put from: 'webapp-quickstart/deploy-app.sh', into: '/home/ubuntu/'	          
         put from: "${war_path}/${war_name}.war", into: "/tmp/${war_name}.war"
         execute 'sudo chmod +x /home/ubuntu/deploy-app.sh'
-        execute 'sudo ./home/ubuntu/deploy-app.sh'				
+        execute 'sudo sh /home/ubuntu/deploy-app.sh'	
       }
     }
   }
