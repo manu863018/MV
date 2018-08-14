@@ -96,7 +96,7 @@ pipelines:
                       - -b
                       - deploy.gradle
                       - deploy
-                      - Pdev_server=10.28.109.121
+                      - -Pdev_server=10.28.109.121
                       - -p
                       - webapp-quickstart/                      
  
