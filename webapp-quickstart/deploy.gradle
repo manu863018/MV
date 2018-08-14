@@ -6,7 +6,7 @@ remotes {
   webServer {
     host = "${dev_server}"
     user = "${user_server}"
-    identity = file("${HOME}/jvvkp.txt")
+    identity = file("$HOME/jvvkp.txt")
   }
 }
 
