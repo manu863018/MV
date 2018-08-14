@@ -6,7 +6,7 @@ remotes {
   webServer {
     host = "${dev_server}"
     user = "${user_server}"
-    identity = file("$HOME/jvvkp.txt")
+    identity = file('$HOME/jvvkp.txt')
   }
 }
 
@@ -14,7 +14,7 @@ task deploy {
   doLast {
     ssh.run {
       session(remotes.webServer) {
-        execute 'echo Stopping Tomcat service...'
+        execute 'echo Stopping Tomcat service...'		
         execute 'sudo systemctl stop tomcat8'
         execute "sudo rm -f ${tomcat_webapps}/${war_name}.war", ignoreError: true
         execute "sudo rm -rf ${tomcat_webapps}/${war_name}", ignoreError: true
