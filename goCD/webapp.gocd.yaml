@@ -75,11 +75,15 @@ pipelines:
               artifacts:
                 - build:
                     source: webapp-quickstart/build/libs/*.war
-                    destination: Build                   
+                    destination: war                   
       - Deploy:
           jobs:
             Application:
               tasks:
+                - fetch:                    
+                    stage: Build
+                    job: building
+                    source: war/                                  
                 - exec:
                     command: ./webapp-quickstart/gradlew
                     arguments:
@@ -87,6 +91,7 @@ pipelines:
                       - deploy.gradle
                       - deploy
                       - -Pdev_server=10.28.109.121
+                      - -Pwar_path=war
                       - -p
                       - webapp-quickstart/                      
  
