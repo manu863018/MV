@@ -14,8 +14,7 @@ task deploy {
   doLast {
     ssh.run {
       session(remotes.webServer) {	
-        put from: 'webapp-quickstart/deploy-app.sh', into: '/home/ubuntu/'	          
-        put from: "${war_path}/${war_name}.war", into: "/tmp/${war_name}.war"
+        put from: 'webapp-quickstart/deploy-app.sh', into: '/home/ubuntu/'	                  
         execute 'sudo chmod +x /home/ubuntu/deploy-app.sh'
         execute 'sudo sh /home/ubuntu/deploy-app.sh'	
       }
