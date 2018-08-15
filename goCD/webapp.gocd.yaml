@@ -93,7 +93,7 @@ pipelines:
                     source: webapp-quickstart/build/reports/tests/test/**/*
                     destination: html
                 - build:
-                    source: build/reports/jacoco/**/*
+                    source: webapp-quickstart/build/reports/jacoco/**/*
                     destination: jacoco                    
                 - test:
                     source: webapp-quickstart/build/test-results/test/*.xml
@@ -106,7 +106,7 @@ pipelines:
             Check:
               tasks:
                 - exec:
-                    command: ./gradlew
+                    command: ./webapp-quickstart/gradlew
                     arguments:                      
                       - "sonarqube"                 
       - Deploy:
