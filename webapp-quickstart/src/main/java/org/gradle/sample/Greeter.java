@@ -15,4 +15,12 @@ public class Greeter {
             greetingStr.close();
         }
     }
+	
+	public int addTwoNumbers(int firstNumber, int secondNumber) {
+		return firstNumber + secondNumber;
+	}
+	
+	public double multiplyTwoNumbers(double firstNumber, double secondNumber) {
+		return firstNumber * secondNumber;
+	}	
 }
