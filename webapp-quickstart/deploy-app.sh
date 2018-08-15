@@ -9,3 +9,4 @@ sudo rm /tmp/${war_name}.war
 
 echo 'Starting Tomcat service...'
 sudo systemctl start tomcat8
+
