@@ -5,8 +5,8 @@ pipelines:
     group: TEST
     materials:
       repo:
-        git: https://github.com/devops-at06/MV.git
-        branch: master
+        git: https://github.com/manu863018/MV.git
+        branch: task12
     stages:
       - Build:
           jobs:
@@ -53,4 +53,45 @@ pipelines:
                       - sonarqube
                       - -p
                       - quickstart/
+  mv-web-quickstart:
+    lock_behavior: lockOnFailure
+    group: WebApp
+    materials:
+      repo:
+        git: https://github.com/manu863018/MV.git
+        branch: task12
+    stages:
+      - Build:
+          jobs:
+            building:
+              tasks:
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments:
+                      - "clean"
+                      - "assemble"
+                      - "-p"
+                      - "webapp-quickstart/"
+              artifacts:
+                - build:
+                    source: webapp-quickstart/build/libs/*.war
+                    destination: war                   
+      - Deploy:
+          jobs:
+            Application:
+              tasks:
+                - fetch:                    
+                    stage: Build
+                    job: building
+                    source: war/                                  
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments:
+                      - -b
+                      - deploy.gradle
+                      - deploy
+                      - -Pdev_server=10.28.109.121
+                      - -Pwar_path=war
+                      - -p
+                      - webapp-quickstart/                      
  
