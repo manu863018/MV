@@ -1,6 +1,4 @@
-node {
-    agent any
-
+node {   
     stages {
         stage('Build') {
             steps {
