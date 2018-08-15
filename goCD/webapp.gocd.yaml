@@ -108,7 +108,7 @@ pipelines:
                 - exec:
                     command: ./webapp-quickstart/gradlew
                     arguments:                      
-                      - "sonarqube"        
+                      - sonarqube        
                       - -p
                       - webapp-quickstart/                    
       - Deploy:
