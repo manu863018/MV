@@ -59,7 +59,7 @@ pipelines:
     materials:
       repo:
         git: https://github.com/manu863018/MV.git
-        branch: task12
+        branch: task13
     stages:
       - Build:
           jobs:
@@ -75,7 +75,42 @@ pipelines:
               artifacts:
                 - build:
                     source: webapp-quickstart/build/libs/*.war
-                    destination: war                   
+                    destination: war      
+      - Test:
+          jobs:
+            Unit_Test:
+              tasks:
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments: 
+                      - clean
+                      - test
+                      - jacocoTestReport
+                      - -p
+                      - webapp-quickstart/                      
+              artifacts:
+                - build:
+                    source: webapp-quickstart/build/reports/tests/test/**/*
+                    destination: html
+                - build:
+                    source: webapp-quickstart/build/reports/jacoco/**/*
+                    destination: jacoco                    
+                - test:
+                    source: webapp-quickstart/build/test-results/test/*.xml
+                    destination: xml                    
+              tabs:
+                unit_test: html/index.html                 
+                code_coverage: jacoco/index.html
+      - CodeQuality:
+          jobs:
+            Check:
+              tasks:
+                - exec:
+                    command: ./webapp-quickstart/gradlew
+                    arguments:                      
+                      - sonarqube        
+                      - -p
+                      - webapp-quickstart/                    
       - Deploy:
           jobs:
             Application:

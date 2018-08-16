@@ -1,11 +1,12 @@
 echo 'Stopping Tomcat service...'		
 sudo systemctl stop tomcat8
-sudo rm -f ${tomcat_webapps}/${war_name}.war
-sudo rm -rf ${tomcat_webapps}/${war_name}
+sudo rm -f /var/lib/tomcat8/webapps/webapp-quickstart.war
+sudo rm -rf /var/lib/tomcat8/webapps/webapp-quickstart
 
 echo 'Sending war file...'
-sudo cp -f /tmp/${war_name}.war ${tomcat_webapps}/${war_name}.war
-sudo rm /tmp/${war_name}.war
+sudo cp -f /tmp/webapp-quickstart.war /var/lib/tomcat8/webapps/webapp-quickstart.war
+sudo rm /tmp/webapp-quickstart.war
 
 echo 'Starting Tomcat service...'
 sudo systemctl start tomcat8
+
