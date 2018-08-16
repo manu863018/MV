@@ -3,4 +3,4 @@ Feature: Gradle-Cucumber integration
     Given A failing scenario
     When I run a failing step
     Then I got a failing step
-	
+
